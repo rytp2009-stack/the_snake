@@ -1,37 +1,3 @@
-Skip to content
-AlexeyVodopyanov
-The_snake
-Repository navigation
-Code
-Issues
-Pull requests
-Actions
-Projects
-Security and quality
-Insights
-Files
-Go to file
-t
-T
-README.md
-requirements.txt
-the_snake.py
-The_snake
-/the_snake.py
-AlexeyVodopyanov
-AlexeyVodopyanov
-Змейка
-16b9d25
- · 
-2 years ago
-The_snake
-/the_snake.py
-
-Code
-
-Blame
-188 lines (145 loc) · 6.35 KB
-def handle_keys(snake: Snake) -> None:
 from random import randint
 import pygame
 from typing import Optional, Tuple, List
@@ -220,3 +186,4 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
+    

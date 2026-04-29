@@ -149,3 +149,60 @@ class Snake(GameObject):
         screen.fill(BOARD_BACKGROUND_COLOR)
 
 
+def handle_keys(game_object):
+    """Обрабатывает нажатия клавиш для изменения направления движения."""
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            raise SystemExit
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP and game_object.direction != DOWN:
+                game_object.next_direction = UP
+            elif event.key == pygame.K_DOWN and game_object.direction != UP:
+                game_object.next_direction = DOWN
+            elif event.key == pygame.K_LEFT and game_object.direction != RIGHT:
+                game_object.next_direction = LEFT
+            elif event.key == pygame.K_RIGHT and game_object.direction != LEFT:
+                game_object.next_direction = RIGHT
+
+
+def main():
+    """Основной цикл игры."""
+    # Создаем объекты игры
+    snake = Snake()
+    apple = Apple()
+    
+
+    while True:
+        clock.tick(SPEED)
+
+
+        # Обрабатываем ввод пользователя
+        handle_keys(snake)
+
+
+        # Обновляем направление движения
+        snake.update_direction()
+
+
+        # Двигаем змейку
+        snake.move()
+
+
+        # Проверяем, съела ли змейка яблоко
+        if snake.get_head_position() == apple.position:
+            snake.length += 1
+            apple.randomize_position()
+
+
+        # Отрисовываем объекты
+        snake.draw(screen)
+        apple.draw(screen)
+
+
+        # Обновляем экран
+        pygame.display.update()
+
+
+if __name__ == '__main__':
+    main()
